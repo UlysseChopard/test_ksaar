@@ -229,3 +229,16 @@ test("Nested objects", () => {
 
   expect(schema).toEqual(expectedValue);
 });
+
+test("Throw an error on null input", () => {
+  expect(() => getSchemaFromValue(null, "result")).toThrow(
+    "Cannot be used with null or undefined value: null"
+  );
+});
+
+test("Throw an error on nested null value", () => {
+  const input = { foo: "bar", nullVal: null };
+  expect(() => getSchemaFromValue(input)).toThrow(
+    "Cannot be used with null or undefined value: null"
+  );
+});

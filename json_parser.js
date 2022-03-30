@@ -20,7 +20,7 @@ class ValueSchema {
 
 const getSchemaFromValue = (value, key) => {
   if (value === null || value === undefined) {
-    throw new Error(`Cannot be used with nullish value like: ${value}`);
+    throw new Error(`Cannot be used with null or undefined value: ${value}`);
   }
   const expectedValue = new ValueSchema({ key, value });
   if (expectedValue.type === "object") {
@@ -38,6 +38,7 @@ const getSchemaFromValue = (value, key) => {
       expectedValue.attributeIds.push(k);
     });
   }
+  if (key === "result") console.log(expectedValue);
   return expectedValue;
 };
 
