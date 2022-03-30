@@ -22,24 +22,19 @@ const getSchemaFromValue = (value, key) => {
   if (value === null || value === undefined) {
     throw new Error(`Cannot be used with null or undefined value: ${value}`);
   }
-  const expectedValue = new ValueSchema({ key, value });
-  if (expectedValue.type === "object") {
-    Object.entries(value).forEach(([k, v]) => {
-      expectedValue.attributes[k] = getSchemaFromValue(v, k);
-      expectedValue.attributeIds.push(k);
+  const schema = new ValueSchema({ key, value });
+  if (schema.type === "list" && value.length) {
+    schema.listItemType = typeof value[0];
+  }
+  if (schema?.listItemType === "object" || schema.type === "object") {
+    const nestedValue = schema.type === "object" ? value : value[0];
+    Object.entries(nestedValue).forEach(([k, v]) => {
+      schema.attributes[k] = getSchemaFromValue(v, k);
+      schema.attributeIds.push(k);
     });
   }
-  if (expectedValue.type === "list" && value.length) {
-    expectedValue.listItemType = typeof value[0];
-  }
-  if (expectedValue?.listItemType === "object") {
-    Object.entries(value[0]).forEach(([k, v]) => {
-      expectedValue.attributes[k] = getSchemaFromValue(v, k);
-      expectedValue.attributeIds.push(k);
-    });
-  }
-  if (key === "result") console.log(expectedValue);
-  return expectedValue;
+  if (key === "result") console.log(schema);
+  return schema;
 };
 
 module.exports = {
