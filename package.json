@@ -1,0 +1,23 @@
+{
+  "name": "test_ksaar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "json_parser.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UlysseChopard/test_ksaar.git"
+  },
+  "keywords": [],
+  "author": "UCG",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UlysseChopard/test_ksaar/issues"
+  },
+  "homepage": "https://github.com/UlysseChopard/test_ksaar#readme",
+  "devDependencies": {
+    "jest": "^27.5.1"
+  }
+}
