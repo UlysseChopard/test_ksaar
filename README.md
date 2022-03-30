@@ -2,7 +2,7 @@
 
 ## JSON parser
 
-(Here are the instructions) [https://ksaar.notion.site/JSON-parser-76dcb0457a394b30a6b8304e9c1b7b6d]
+[Here are the instructions](https://ksaar.notion.site/JSON-parser-76dcb0457a394b30a6b8304e9c1b7b6d)
 
 ## Test
 
